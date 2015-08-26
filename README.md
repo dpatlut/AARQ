@@ -70,13 +70,13 @@ ___
 We all know the basic Crud stuff
 	ex. .create , .update , .all , .destroy , .find  etc.
 
-1.Retrieving Single Objects
+1.Retrieving Single Objects ( one thing at a time man! )
 
     client = Client.find(10)
     .first (!)
     .last (!)
 
-2.Retrieving Multiple Objects
+2.Retrieving Multiple Objects ( I need like 10 of those )
 
     client = Client.find([1, 10])
 
@@ -107,7 +107,7 @@ We all know the basic Crud stuff
                         		Batch Size => Which primary id you want to stop at
                         		Start => Which primary id to start on 
 
-3. Conditions
+3. Conditions ( If Jason is.... where... )
 	
     a) Array
 		
@@ -148,24 +148,24 @@ We all know the basic Crud stuff
         Post.first.categories.any?
         Post.first.categories.many?
 
-4. Ordering
+4. Ordering ( your room is so messy! )
 
     	Client.order("created_at")
     	Client.order("created_at DESC")
     	Client.order("created_at ASC")
     	Client.order("orders_count ASC, created_at DESC")
 
-5. Selecting Specific Fields
+5. Selecting Specific Fields ( I need.... )
 	
         Client.select("viewable_by, locked")
         Client.select(:name).uniq
 
-6. Limits
+6. Limits ( No more cookies for you! )
 
     	Client.limit(5)
     	Client.limit(5).offset(30)
 
-7. Joining
+7. Joining ( Mashup! )
 
     	ex.
     	 class Client < ActiveRecord::Base
@@ -193,7 +193,7 @@ We all know the basic Crud stuff
     	Post.joins(:category, :comments)
     	Post.joins(:comments => :guest)
 
-8. Eager Loading 
+8. Eager Loading ( Load , Load , Load your db )
 	
     	clients = Client.limit(10)
      
@@ -217,7 +217,7 @@ We all know the basic Crud stuff
     	Post.includes(:category, :comments)
     	Category.includes(:posts => [{:comments => :guest}, :tags]).find(1)
 
-9. Pluck
+9. Pluck ( pluck you! )
 
     	Client.where(:active => true).pluck(:id)
     	# SELECT id FROM clients WHERE active = 1
@@ -227,13 +227,13 @@ We all know the basic Crud stuff
     
     	Client.pluck(:id)
 
-10. Existance
+10. Existance ( Do we really exist? )
 
     	Client.exists?(1)
     	Client.exists?(1,2,3)
     	Client.where(:first_name => 'Ryan').exists?
 
-11. Calculations
+11. Calculations ( Math yo! )
 
     	Client.count
     	Client.where(:first_name => 'Ryan').count
