@@ -108,7 +108,8 @@ We all know the basic Crud stuff
                         		Start => Which primary id to start on 
 
 3. Conditions ( If Jason is.... where... )
-	
+   >When we need to specify a certain condition (.where)
+		
     a) Array
 		
         Client.where("orders_count = ?", params[:orders])
@@ -149,6 +150,7 @@ We all know the basic Crud stuff
         Post.first.categories.many?
 
 4. Ordering ( your room is so messy! )
+   >When we need to order our content specifically
 
     	Client.order("created_at")
     	Client.order("created_at DESC")
@@ -156,17 +158,20 @@ We all know the basic Crud stuff
     	Client.order("orders_count ASC, created_at DESC")
 
 5. Selecting Specific Fields ( I need.... )
-	
+    >When we need a specific field 
+
         Client.select("viewable_by, locked")
         Client.select(:name).uniq
 
 6. Limits ( No more cookies for you! )
+   >When we need to limit how much specifically 
 
     	Client.limit(5)
     	Client.limit(5).offset(30)
 
 7. Joining ( Mashup! )
-
+   >When we need to find stuff in multiple tables
+	
     	ex.
     	 class Client < ActiveRecord::Base
           has_one :address
@@ -188,7 +193,7 @@ We all know the basic Crud stuff
     	or
     
     	User.joins("LEFT JOIN bookmarks ON bookmarks.bookmarkable_type = 'Post' AND bookmarks.user_id = users.id")
-    	=> SELECT "users".* FROM "users" LEFT JOIN bookmarks ON bookmarks.bookmarkable_type = 'Post' AND bookmarks.user_id = users.id
+    	=> SELECT "users".* FROM "users" LEFT JOIN bookmarks ON bookmarks.bookmarkable_type = 'Post' AND   bookmarks.user_id = users.id
 
     	Post.joins(:category, :comments)
     	Post.joins(:comments => :guest)
@@ -201,7 +206,7 @@ We all know the basic Crud stuff
       		puts client.address.postcode
     	end
 
-	This code looks fine at the first sight. But the problem lies within the total number of     queries executed. The above code executes 1 ( to find 10 clients ) + 10 ( one per each       client to load the address ) = 11 queries in total.
+	This code looks fine at the first sight. But the problem lies within the total number of     queries executed. The above code executes 1 ( to find 10 clients ) + 10 ( one per each client to load the address ) = 11 queries in total.
 	
  	 Solution : Active Record got yo back
  	 
