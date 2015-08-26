@@ -1,0 +1,20 @@
+Advanced methods to work with active records
+
+Now y'all know the basic format of Active Records Relation, lets get actual usable content from it
+
+the methods we can use with the Relations object
+
+The more advanced active records methods
+
+//will be using "Table" as an sample table in postgresql
+
+in addition to pulling usable data from your database, you can:
+
+  check for existence -->> Table.exists? -->> will return true or false
+  check if any records match a criteria -->> Table.any? -->> will return true or false
+  check if multiple records match criteria -->> Table.many? -->> true or false
+
+you can use these on the model itself (as shown above) or with a relation or association
+
+relation:
+Table.where(:column => true).any?
