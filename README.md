@@ -104,7 +104,8 @@ We all know the basic Crud stuff
                           			NewsLetter.weekly_deliver(user)
                         		end
                         
-                        		Batch Size => Which primary id you want to stop at
+                        		Batch Size => 
+                        		How much do we split it up? 10 items batch size : 5 = 2 batches of 5 
                         		Start => Which primary id to start on 
 
 3. Conditions ( If Jason is.... where... )
